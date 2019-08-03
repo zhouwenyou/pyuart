@@ -1,43 +1,6 @@
+è½¯ä»¶ä¸»è¦å®Œæˆä¸²å£é€šè®¯çš„æ•°æ®æ¥æ”¶å’Œå‘é€åŠŸèƒ½
 
-
-3. µ÷ÊÔÎÊÌâ
-3.1 °´Å¥ÊÂ¼şÎÊÌâ
-°´Å¥Ö»°´ÁËÒ»´Î£¬µ«ÊÇ»á³öÏÖµ÷ÓÃ3´Î°´Å¥ÊÂ¼şµÄÏÖÏó¡£
-°´Å¥Ãû³ÆÎªbtnClearWin£¬¹ØÁªÊÂ¼şÓï¾äÈçÏÂ£º
-self.btnClearWin.clicked.connect(self.on_btnClearWin_clicked)
-ÁíÍâµ±È¡Ïû´Ë°´Å¥µÄ¹ØÁªÊÂ¼şÓï¾äºó£¬µã»÷°´Å¥Ê±ÈÔ»áµ÷ÓÃ´Ë¹ØÁªº¯Êı£¬²¢ÇÒµ÷ÓÃÊÂ¼şÓÉ3´Î±ä³ÉÁË2´Î¡£
-
-µ±¹ØÁªÊÂ¼şµÄº¯ÊıÃû³Æ¸ÄÎªÈçÏÂÓï¾äÊ±Õı³£¡£
-self.btnClearWin.clicked.connect(self.on_clearWin_clicked)
-
-·ÖÎö£ºµ±btnClearWin°´Å¥µÄ¹ØÁªÊÂ¼ş£¨º¯Êı£©Ãû³ÆºÍPyQt5Ä¬ÈÏµÄ°´Å¥ÊÂ¼şÃû³Æ(on_btnClearWin_clicked)ÏàÍ¬Ê±»á³öÏÖµ÷ÓÃ3´Î°´Å¥ÊÂ¼şµÄÏÖÏó¡£
-
-3.2 texteditÏÔÊ¾ÎÊÌâ
-ÔÚshowRecvMsgº¯ÊıÖĞ£¬ÏÔÊ¾texteditÊı¾İÊ±£¬µ±Ê¹ÓÃappend()·½·¨Ê±Ã»ÓĞÎÊÌâ£¬Ê¹ÓÃsetPlainText()·½·¨Ê±³ÌĞò³öÏÖ´íÎó¡£
-def showRecvMsg(self, argvmsg):
-    """
-    show receive message.
-    """
-    msg = str(argvmsg)
-    # print(msg)
-    s = ""
-    if self.chkHexShow.isChecked():
-        for i in range(len(msg)):
-            hval = ord(msg[i])
-            hhex = "%02x" % hval
-            s += hhex + ' '
-    else:
-        s = msg
-
-    self.txtRecvMsg.append(s)
-    # self.txtRecvMsg.setPlainText(self.txtRecvMsg.toPlainText() + s)
-
-ÔÚ°´Å¥µÄ¹ØÁªÊÂ¼şÖĞÓÃsetPlainText()·½·¨ÏÔÊ¾texteditÊı¾İÊ±Õı³£¡£
-def on_clearWin_clicked(self):
-    s = "01 02 03 04"
-    self.txtRecvMsg.setPlainText(self.txtRecvMsg.toPlainText() + s)
-    return
-
-ÓÃPyQt5µÄplain text eidtÏÔÊ¾²¿¼ş²âÊÔÊ±¹ÊÕÏÏÖÏóÒ»Ñù¡£
-
-´ËÎÊÌâÃ»ÓĞ½â¾ö£¬Ğè½øÒ»²½ÑĞ¾¿¡£
+å¼€å‘ç¯å¢ƒå’Œå·¥å…·
+Python		V3.7.4
+PyCharm		2019.2
+PyQt		V5.11.2
