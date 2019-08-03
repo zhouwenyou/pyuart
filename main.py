@@ -39,22 +39,8 @@ class RecvThread(QtCore.QThread):
         while True:
             count = self.ser.inWaiting()
             if count != 0:
-                rcv = self.ser.read(count)          # read serial message
-                # receive message：b'01 02 03 04 05' or b'\x01\x02\x80\x00\xAA\xFF'
-                # hex 格式: \xYY\xYY\xYY, 如果接收到的字符是这种格式, 则说明是hex字符, 我们需要将
-                # \x去除掉, 取出YY， 然后组成字符串返回
-                # 如果接收到的是字符串，则使用decode进行解码
-                print("接收到的数据 %s \n类型为: %s\n" % (rcv, type(rcv)))
-
-                msg = ""
-                try:
-                    msg = rcv.decode()
-                except (TypeError, UnicodeDecodeError):
-                    for i in range(len(rcv)):
-                        msg += hex(rcv[i])[2:]
-                        msg += ' '
-                print("处理后的数据 %s \n类型为: %s\n" % (msg, type(msg)))
-
+                msg = self.ser.read(count)          # read serial message
+                # msg = b'01 02 03 04 05' or b'\x01\x02\x80\x00\xAA\xFF'
                 self.show(msg)                      # show receive message
                 # self.ser.flushInput()               # clear receive buffer
 
@@ -333,19 +319,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         show receive message.
         msg = b'01 02 03 04 05' or b'x01\x02\x80\x00\xAA\xFF'
         """
-        msg = str(recvmsg)
-        s = ""
-        if self.chkHexShow.isChecked():
-
-            for i in range(len(msg)):
-                hval = ord(msg[i])
-                hhex = "%02x" % hval
-                s += hhex + ' '
-                # hhex = "%02x" % msg[i]
-                # s += hhex + ' '
-        else:
-            s = msg.decode("utf-8")
-
         s = self.bytesToStr(recvmsg, self.chkHexShow.isChecked())
         self.txtRecvMsg.append(s)
         # self.txtRecvMsg.setPlainText(self.txtRecvMsg.toPlainText() + s)
